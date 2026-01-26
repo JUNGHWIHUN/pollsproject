@@ -1,0 +1,15 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+{% include "polls/head.html" %}
+<body>
+    {% include "polls/header.html" %}
+        
+    <main>
+        {% block content %}
+         <!-- 이 사이에 컨텐츠가 들어갑니다. -->
+        {% endblock %}
+    </main>
+    {% include "polls/footer.html" %}   
+</body>
+</html>

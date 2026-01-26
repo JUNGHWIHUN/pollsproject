@@ -1,0 +1,347 @@
+body {
+ background: url("../img/background.jpg") no-repeat top left;
+ background-size: cover;
+ font-family: "Segoe UI", sans-serif;
+ margin: 0;
+ padding: 0;
+}
+
+header {
+ background-color: #4a4e69;
+ color: white;
+ padding: 20px;
+ justify-content: space-between;
+ align-items: center;
+ position: relative;
+}
+
+.site-nav li {
+ display: inline;
+ background: none;
+ box-shadow: none;
+}
+
+main {
+ padding: 20px;
+ text-align: center;
+}
+
+h2 {
+ color: #333;
+ font-size: 28px;
+ margin-bottom: 20px;
+}
+
+/* 질문 리스트 중앙 정렬 */
+ul {
+ list-style: none;
+ padding: 0;
+ margin: 0 auto;
+ max-width: 700px;
+}
+
+li {
+ background-color: white;
+ border-radius: 10px;
+ margin-bottom: 12px;
+ padding: 15px 20px;
+ box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+ transition: background-color 0.2s ease;
+}
+
+li:hover {
+ background-color: #f0f4f8;
+}
+
+a {
+ text-decoration: none;
+ font-size: 18px;
+ color: #1d3557;
+}
+
+footer {
+ margin-top: 50px;
+ padding: 20px;
+ background-color: #f1f1f1;
+ text-align: center;
+ font-size: 14px;
+ color: #666;
+}
+
+footer a {
+ color: #1e1c2b;
+ text-decoration: none;
+ font-size: 14px;
+}
+
+/*우선순위를 위해서*/
+.site-header {
+ width: 100%;
+ position: relative;
+ text-align: center;
+}
+
+.site-title {
+ margin: 0;
+ font-size: 24px;
+}
+
+.site-nav {
+ position: absolute;
+ left: 100px;
+ top: 50%;
+ transform: translateY(-50%);
+}
+
+.site-nav ul {
+ list-style: none;
+ margin: 0;
+ padding: 0;
+}
+
+.site-nav li:hover {
+ background: none;
+}
+
+.site-nav li:hover a {
+ color: #b8bee6;
+}
+
+.site-nav a {
+ color: white;
+ text-decoration: none;
+ font-weight: bold;
+ font-size: 16px;
+}
+
+/* 질문 리스트 영역 */
+.question-list {
+ list-style: none;
+ padding: 0;
+ margin: 0 auto;
+ max-width: 700px;
+}
+
+.question-item {
+ background-color: white;
+ border-radius: 12px;
+ margin-bottom: 20px;
+ padding: 20px;
+ box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+ text-align: left;
+ transition: box-shadow 0.2s ease;
+}
+
+.question-item:hover {
+ box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+}
+
+/*###-------index.html----------###*/
+/* 질문 텍스트 */
+.question-text {
+ font-size: 18px;
+ font-weight: 500;
+ color: #2c2c2c;
+ margin-bottom: 10px;
+}
+ 
+/* 버튼 영역 */
+.question-actions {
+ display: flex;
+ gap: 8px;
+}
+ 
+/* 공통 버튼 스타일 */
+.button {
+ padding: 6px 12px;
+ border-radius: 5px;
+ font-size: 12px;
+ font-weight: 500;
+ color: white;
+ text-decoration: none;
+ transition: all 0.2s ease-in-out;
+}
+
+/* 각 버튼 색상*/
+.button.create {
+ background-color: #6c757d; /* 차분한 회색 */
+}
+
+.button.update {
+ background-color: #495057; /* 짙은 회색 */
+}
+
+.button.delete {
+ background-color: #adb5bd; /* 은은한 회색 */
+}
+
+/* 호버 시 강조 */
+.button:hover {
+ filter: brightness(1.15);
+ transform: translateY(-1px);
+}
+ 
+/* 폼 전체 컨테이너 */
+form{
+  margin-top: 20px;
+}
+.form-container {
+ max-width: 500px;
+ margin: 40px auto;
+ background-color: white;
+ padding: 30px;
+ border-radius: 12px;
+ box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* 폼 필드 텍스트 */
+.form-container label {
+ font-weight: 500;
+ color: #333;
+ display: block;
+ margin-bottom: 6px;
+}
+
+.form-container input {
+ width: 100%;
+ padding: 8px 12px;
+ border: 1px solid #ccc;
+ border-radius: 6px;
+ margin-bottom: 20px;
+ font-size: 14px;
+}
+
+/* 저장 버튼 스타일 */
+.submit-btn {
+ background-color: #4a4e69;
+ color: white;
+ padding: 10px 20px;
+ font-size: 14px;
+ border: none;
+ border-radius: 6px;
+ cursor: pointer;
+ transition: background-color 0.2s ease;
+}
+
+.submit-btn:hover {
+ background-color: #5c6085;
+}
+
+/*###-------question_form_delete.html----------###*/
+/* 삭제 폼 버튼 스타일 */
+.btn-delete {
+ background-color: #e63946;
+ color: white;
+ border: none;
+ padding: 10px 20px;
+ margin-right: 10px;
+ border-radius: 6px;
+ font-size: 14px;
+ cursor: pointer;
+ transition: background-color 0.2s ease;
+}
+
+.btn-delete:hover {
+ background-color: #c82333;
+}
+ 
+.btn-cancel {
+ background-color: #dee2e6;
+ color: #333;
+ padding: 10px 20px;
+ border-radius: 6px;
+ text-decoration: none;
+ font-size: 14px;
+ transition: background-color 0.2s ease;
+}
+
+.btn-cancel:hover {
+ background-color: #ced4da;
+}
+
+/*###-------results.html----------###*/
+.results-container {
+ max-width: 700px;
+ margin: 50px auto;
+ padding: 20px;
+ text-align: center;
+}
+
+.question-title {
+ font-size: 24px;
+ font-weight: bold;
+ margin-bottom: 30px;
+ color: #2c2c2c;
+}
+
+.result-list {
+ list-style: none;
+ padding: 0;
+ margin: 0;
+}
+
+.result-list li {
+ background-color: white;
+ border-radius: 10px;
+ margin-bottom: 16px;
+ padding: 14px 20px;
+ box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ font-size: 16px;
+ transition: background-color 0.2s ease;
+}
+
+.result-list li:hover {
+ background-color: #f1f3f5;
+}
+
+.choice-text {
+ font-weight: 500;
+ color: #1d3557;
+}
+
+.vote-count {
+ font-weight: 600;
+ color: #495057;
+}
+
+/* 다시 투표 버튼 */
+.vote-again {
+ margin-top: 30px;
+}
+
+.vote-again-btn {
+ display: inline-block;
+ background-color: #4a4e69;
+ color: white;
+ padding: 10px 20px;
+ border-radius: 8px;
+ font-size: 14px;
+ text-decoration: none;
+ transition: background-color 0.2s ease;
+}
+
+.vote-again-btn:hover {
+ background-color: #5f6483;
+}
+
+/* 아이콘 크기 및 정렬 수정 */
+.icon {
+    width: 32px;         /* 적당한 아이콘 크기 */
+    height: 32px;        /* 가로세로 비율 유지 */
+    object-fit: contain; /* 이미지 왜곡 방지 */
+}
+
+.header {
+    display: flex;
+    align-items: center;    /* 아이콘과 글자 세로 중앙 맞춤 */
+    justify-content: center; /* 가로 중앙 정렬 */
+    margin: 30px 0;
+    gap: 15px;              /* 아이콘과 글자 사이 간격 */
+}
+
+.header h2 {
+    margin: 0;             /* 헤더 안의 h2 기본 여백 제거로 정렬 유지 */
+}
