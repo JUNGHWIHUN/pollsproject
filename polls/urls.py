@@ -1,5 +1,7 @@
 from django.urls import path
 from . import views
+from . import practice_views
+
 
 app_name = "polls"
 
@@ -24,5 +26,18 @@ urlpatterns = [
       path("<int:pk>/delete" , views.QuestionDeleteView.as_view(), name = "question_delete"),
       
 
+ # ✅ 연습용 (브라우저 확인)
+    path("practice/1/", practice_views.practice_1, name="practice_1"),
+    path("practice/2/", practice_views.practice_2, name="practice_2"),
+    path("practice/3/", practice_views.practice_3, name="practice_3"),
+    path("practice/5/", practice_views.practice_5, name="practice_5"),
+    path("practice/6/", practice_views.practice_6, name="practice_6"),
+
+    # ✅ 연습용 (플랫폼 확인: JSON)
+    path("practice/api/1/", practice_views.practice_api_1, name="practice_api_1"),
+    path("practice/api/2/", practice_views.practice_api_2, name="practice_api_2"),
+    path("practice/api/3/", practice_views.practice_api_3, name="practice_api_3"),
+    path("practice/api/5/", practice_views.practice_api_5, name="practice_api_5"),
+    path("practice/api/6/", practice_views.practice_api_6, name="practice_api_6"),
 ]
 

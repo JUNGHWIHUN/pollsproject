@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 from dotenv import load_dotenv
 from pathlib import Path
 import os
+import dj_database_url
 
 load_dotenv()
 
@@ -30,7 +31,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['cool-forest-3167.fly.dev', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -48,6 +49,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware", # 여기에 추가
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -87,17 +89,27 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # }
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.environ.get("POSTGRES_DB", "django_first2_db"),
-        "USER": os.environ.get("POSTGRES_USER", "django_user"),
-        "PASSWORD": os.environ.get("POSTGRES_PASSWORD", "strong-password"),
-        "HOST": os.environ.get("POSTGRES_HOST", "127.0.0.1"),
-        "PORT": os.environ.get("POSTGRES_PORT", "5432"),
-    }
+    "default": dj_database_url.config(
+        default=(
+            os.environ.get("DATABASE_URL")
+            or f"postgresql://{os.environ.get('POSTGRES_USER','django_user')}:"
+            f"{os.environ.get('POSTGRES_PASSWORD','strong-password')}@"
+            f"{os.environ.get('POSTGRES_HOST','127.0.0.1')}:"
+            f"{os.environ.get('POSTGRES_PORT','5432')}/"
+            f"{os.environ.get('POSTGRES_DB','django_first2_db')}"
+        ),
+        conn_max_age=600,
+        conn_health_checks=True,
+        ssl_require=False,  # 이 줄 추가 또는 수정
+    )
 }
 
-SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY") or "ci-dev-secret-key"
+SECRET_KEY = (
+    os.environ.get("DJANGO_SECRET_KEY")
+    or os.environ.get("SECRET_KEY")
+    or "ci-dev-secret-key"
+    )
+DEBUG = False
 
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
@@ -138,6 +150,10 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",   # ✅ 공통 static 폴더
 ]
 
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 LOGIN_REDIRECT_URL = "polls:index"  # 로그인 후 이동할 페이지
 LOGOUT_REDIRECT_URL = "polls:index" # 로그아웃 후 이동할 페이지
+
+ALLOWED_HOSTS = ['cool-forest-3167.fly.dev', '.fly.dev', 'localhost', '127.0.0.1']
+CSRF_TRUSTED_ORIGINS = ['https://cool-forest-3167.fly.dev',]
